@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: Install git
+      package:
+        name: git
+      become: true
+  roles:
+    - dotfiles

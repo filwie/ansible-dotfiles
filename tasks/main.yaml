@@ -1,0 +1,15 @@
+---
+- name: Clone dotfiles repo
+  git:
+    repo: "{{ dotfiles_repo_url }}"
+    dest: "{{ dotfiles_repo_dest }}"
+
+- name: Make sure destination directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop: "{{ dest_dirs | flatten }}"
+  vars:
+    dest_dirs:
+      - "{{ dotfiles_xdg.values() | list }}"
+      - "{{ dotfiles_bin }}"

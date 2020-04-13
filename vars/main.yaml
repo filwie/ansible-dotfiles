@@ -1,0 +1,10 @@
+---
+dotfiles_repo_root: "{{ 'git@github.com:' if dotfiles_use_ssh | bool
+                        else 'https://github.com/' }}"
+dotfiles_repo_url: "{{ dotfiles_repo_root }}{{ dotfiles_repo }}.git"
+
+dotfiles_xdg:
+  config_home: "{{ ansible_env.XDG_CONFIG_HOME
+                   | default(ansible_env.HOME + '/.config') }}"
+  data_home: "{{ ansible_env.XDG_DATA_HOME
+                   | default(ansible_env.HOME + '/.local/share') }}"

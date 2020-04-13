@@ -1,0 +1,13 @@
+---
+dotfiles_use_ssh: false
+dotfiles_repo: "filwie/dotfiles"
+
+dotfiles_repo_dest: "{{ ansible_env.HOME }}/.dotfiles"
+
+dotfiles_bin: "{{ ansible_env.HOME }}/.local/bin"
+
+dotfiles_link:
+  - src: "home/.local/share/gnupg/gpg-agent.conf"
+    dest: "{{ dotfiles_xdg.data_home }}/gnupg/gpg-agent.conf"
+  - src: ".config/*"
+    dest: "{{ dotfiles_xdg.config_home }}/"
